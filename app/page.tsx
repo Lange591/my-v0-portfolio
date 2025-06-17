@@ -130,8 +130,8 @@ Best regards,`)
     {
       company: "Telone Digital Innovation Department",
       position: "Digital Innovation Engineer",
-      duration: "3 Years",
-      period: "2022 - Present",
+      duration: "2 Years",
+      period: "2025 - Present",
       description:
         "Leading digital transformation projects, developing AI/ML solutions, and implementing IoT systems for telecommunications infrastructure.",
       achievements: ["SmartCity Traffic System", "InsureMe Platform", "IoT Hardware Integration"],
@@ -140,7 +140,7 @@ Best regards,`)
     {
       company: "Scentpro Enterprises",
       position: "Technical Support Engineer",
-      duration: "3 Years",
+      duration: "2 1/2 Years",
       period: "2022 - 2025",
       description:
         "Provided comprehensive technical support and developed innovative solutions including the Virtual Fiscal Device that replaced imported hardware.",
@@ -161,16 +161,15 @@ Best regards,`)
 
   const projects = [
     {
-      title: "SmartCity Traffic System",
-      description:
-        "AI-powered traffic violation management using image recognition and automated notifications for Zimbabwe's Vision 2030.",
-      tech: ["Java", "Spring AI", "Computer Vision", "IoT"],
-      icon: <Car className="w-6 h-6" />,
-      type: "AI/ML Project",
-      hasVideo: true,
-      youtubeId: "h5KQgNiMK3w", // Extracted from your iframe
-      gradient: "from-blue-500 to-cyan-500",
-    },
+  title: "SmartCity Traffic System",
+  description: "AI-powered traffic violation management using image recognition and automated notifications for Zimbabwe's Vision 2030.",
+  tech: ["Java", "Spring AI", "Computer Vision", "IoT"],
+  icon: <Car className="w-6 h-6" />,
+  type: "AI/ML Project",
+  hasVideo: true,
+  vimeoId: "1093948640", // Changed from youtubeId to vimeoId
+  gradient: "from-blue-500 to-cyan-500",
+},
     {
       title: "InsureMe Platform",
       description:
@@ -308,15 +307,18 @@ Best regards,`)
               <X className="w-8 h-8" />
             </button>
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                className="absolute inset-0 w-full h-full rounded-2xl"
-                src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
+             <iframe
+  className="absolute inset-0 w-full h-full rounded-2xl"
+  src={selectedVideo === "1093948640" 
+    ? `https://player.vimeo.com/video/${selectedVideo}?autoplay=1&title=0&byline=0&portrait=0&badge=0`
+    : `https://www.youtube.com/embed/${selectedVideo}?autoplay=1`
+  }
+  title="Video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+></iframe>
             </div>
           </div>
         </div>
@@ -497,7 +499,7 @@ Best regards,`)
                 <p className="text-xl text-blue-200 leading-relaxed">
                   From developing AI-powered traffic systems supporting{" "}
                   <span className="text-cyan-400 font-semibold">Zimbabwe's Vision 2030 to creating</span>
-                  software solutions that replace imported hardware, I specialize in transforming complex challenges
+{" "}software solutions that replace imported hardware, I specialize in transforming complex challenges
                   into elegant, scalable solutions.
                 </p>
                 <p className="text-xl text-blue-200 leading-relaxed">
@@ -643,18 +645,27 @@ Best regards,`)
 
                 <CardContent className="space-y-8">
                   {/* YouTube Video Demo */}
-                  {project.hasVideo && project.youtubeId && (
+                  {project.hasVideo && (project.youtubeId || project.vimeoId) && (
                     <div
                       className="relative bg-slate-900 rounded-3xl overflow-hidden group/video border border-blue-500/20 cursor-pointer"
-                      onClick={() => handleVideoPlay(project.youtubeId!)}
+                      onClick={() => handleVideoPlay(project.youtubeId || project.vimeoId!)}
                     >
                       <div className="aspect-video bg-gradient-to-br from-slate-800 to-blue-900 flex items-center justify-center relative">
                         {/* YouTube Thumbnail */}
-                        <img
-                          src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
-                          alt={`${project.title} Demo`}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
+                      {project.youtubeId ? (
+  <img
+    src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
+    alt={`${project.title} Demo`}
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+) : (
+  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-800 to-slate-800 flex items-center justify-center">
+    <div className="text-center">
+      <Play className="w-16 h-16 text-blue-400 mx-auto mb-2" />
+      <p className="text-blue-300 text-lg font-semibold">Watch Demo</p>
+    </div>
+  </div>
+)}
                         <div className="absolute inset-0 bg-black/40 group-hover/video:bg-black/20 transition-colors"></div>
                         <div className="relative z-10 text-center">
                           <div className="bg-blue-500/90 rounded-full p-6 group-hover/video:scale-125 transition-transform duration-300 shadow-2xl">
