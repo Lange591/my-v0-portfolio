@@ -38,6 +38,9 @@ jobs:
       - name: Build the site
         run: npm run build # This will create the static 'out' folder
 
+      - name: Verify build output
+        run: ls -R
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
