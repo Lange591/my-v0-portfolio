@@ -161,15 +161,16 @@ Best regards,`)
 
   const projects = [
     {
-  title: "SmartCity Traffic System",
-  description: "AI-powered traffic violation management using image recognition and automated notifications for Zimbabwe's Vision 2030.",
-  tech: ["Java", "Spring AI", "Computer Vision", "IoT"],
-  icon: <Car className="w-6 h-6" />,
-  type: "AI/ML Project",
-  hasVideo: true,
-  vimeoId: "1093948640", // Changed from youtubeId to vimeoId
-  gradient: "from-blue-500 to-cyan-500",
-},
+      title: "SmartCity Traffic System",
+      description:
+        "AI-powered traffic violation management using image recognition and automated notifications for Zimbabwe's Vision 2030.",
+      tech: ["Java", "Spring AI", "Computer Vision", "IoT"],
+      icon: <Car className="w-6 h-6" />,
+      type: "AI/ML Project",
+      hasVideo: true,
+      vimeoId: "1093948640",
+      gradient: "from-blue-500 to-cyan-500",
+    },
     {
       title: "InsureMe Platform",
       description:
@@ -178,7 +179,7 @@ Best regards,`)
       icon: <Shield className="w-6 h-6" />,
       type: "Full-Stack Platform",
       hasVideo: true,
-      youtubeId: "4baSzB_NHtQ", // Extracted from your iframe
+      youtubeId: "4baSzB_NHtQ",
       gradient: "from-cyan-500 to-blue-600",
     },
     {
@@ -189,7 +190,7 @@ Best regards,`)
       icon: <Database className="w-6 h-6" />,
       type: "Innovation Project",
       hasVideo: true,
-      youtubeId: "nAeOmvxw-sA", // Extracted from your iframe
+      youtubeId: "nAeOmvxw-sA",
       gradient: "from-blue-600 to-indigo-500",
     },
     {
@@ -296,7 +297,7 @@ Best regards,`)
         ></div>
       </div>
 
-      {/* YouTube Video Modal */}
+      {/* Video Modal - Supports both YouTube and Vimeo */}
       {selectedVideo && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative w-full max-w-4xl">
@@ -307,18 +308,19 @@ Best regards,`)
               <X className="w-8 h-8" />
             </button>
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-             <iframe
-  className="absolute inset-0 w-full h-full rounded-2xl"
-  src={selectedVideo === "1093948640" 
-    ? `https://player.vimeo.com/video/${selectedVideo}?autoplay=1&title=0&byline=0&portrait=0&badge=0`
-    : `https://www.youtube.com/embed/${selectedVideo}?autoplay=1`
-  }
-  title="Video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerPolicy="strict-origin-when-cross-origin"
-  allowFullScreen
-></iframe>
+              <iframe
+                className="absolute inset-0 w-full h-full rounded-2xl"
+                src={
+                  selectedVideo === "1093948640"
+                    ? `https://player.vimeo.com/video/${selectedVideo}?h=fbdba7b2a6&autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`
+                    : `https://www.youtube.com/embed/${selectedVideo}?autoplay=1`
+                }
+                title="Video player"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
@@ -498,9 +500,9 @@ Best regards,`)
                 </p>
                 <p className="text-xl text-blue-200 leading-relaxed">
                   From developing AI-powered traffic systems supporting{" "}
-                  <span className="text-cyan-400 font-semibold">Zimbabwe's Vision 2030 to creating</span>
-{" "}software solutions that replace imported hardware, I specialize in transforming complex challenges
-                  into elegant, scalable solutions.
+                  <span className="text-cyan-400 font-semibold">Zimbabwe's Vision 2030</span> to creating software
+                  solutions that replace imported hardware, I specialize in transforming complex challenges into
+                  elegant, scalable solutions.
                 </p>
                 <p className="text-xl text-blue-200 leading-relaxed">
                   Mentored by <span className="text-blue-400 font-semibold">Dr. Thambo Nyathi</span> (University of
@@ -644,35 +646,47 @@ Best regards,`)
                 </CardHeader>
 
                 <CardContent className="space-y-8">
-                  {/* YouTube Video Demo */}
+                  {/* Video Demo - Supports both YouTube and Vimeo */}
                   {project.hasVideo && (project.youtubeId || project.vimeoId) && (
                     <div
                       className="relative bg-slate-900 rounded-3xl overflow-hidden group/video border border-blue-500/20 cursor-pointer"
                       onClick={() => handleVideoPlay(project.youtubeId || project.vimeoId!)}
                     >
                       <div className="aspect-video bg-gradient-to-br from-slate-800 to-blue-900 flex items-center justify-center relative">
-                        {/* YouTube Thumbnail */}
-                      {project.youtubeId ? (
-  <img
-    src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
-    alt={`${project.title} Demo`}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-) : (
-  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-800 to-slate-800 flex items-center justify-center">
-    <div className="text-center">
-      <Play className="w-16 h-16 text-blue-400 mx-auto mb-2" />
-      <p className="text-blue-300 text-lg font-semibold">Watch Demo</p>
-    </div>
-  </div>
-)}
-                        <div className="absolute inset-0 bg-black/40 group-hover/video:bg-black/20 transition-colors"></div>
-                        <div className="relative z-10 text-center">
-                          <div className="bg-blue-500/90 rounded-full p-6 group-hover/video:scale-125 transition-transform duration-300 shadow-2xl">
-                            <Play className="w-12 h-12 text-white" />
-                          </div>
-                          <p className="text-white text-xl font-semibold mt-4 drop-shadow-lg">Watch Demo</p>
-                        </div>
+                        {project.youtubeId ? (
+                          <>
+                            {/* YouTube Thumbnail */}
+                            <img
+                              src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`}
+                              alt={`${project.title} Demo`}
+                              className="absolute inset-0 w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover/video:bg-black/20 transition-colors"></div>
+                            <div className="relative z-10 text-center">
+                              <div className="bg-blue-500/90 rounded-full p-6 group-hover/video:scale-125 transition-transform duration-300 shadow-2xl">
+                                <Play className="w-12 h-12 text-white" />
+                              </div>
+                              <p className="text-white text-xl font-semibold mt-4 drop-shadow-lg">Watch Demo</p>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {/* Vimeo Custom Background */}
+                            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-800 to-slate-800 flex items-center justify-center">
+                              <div className="text-center">
+                                <Play className="w-16 h-16 text-blue-400 mx-auto mb-2" />
+                                <p className="text-blue-300 text-lg font-semibold">Vimeo Demo</p>
+                              </div>
+                            </div>
+                            <div className="absolute inset-0 bg-black/40 group-hover/video:bg-black/20 transition-colors"></div>
+                            <div className="relative z-10 text-center">
+                              <div className="bg-blue-500/90 rounded-full p-6 group-hover/video:scale-125 transition-transform duration-300 shadow-2xl">
+                                <Play className="w-12 h-12 text-white" />
+                              </div>
+                              <p className="text-white text-xl font-semibold mt-4 drop-shadow-lg">Watch Demo</p>
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   )}
